@@ -43,64 +43,28 @@
             color: var(--stud-primary);
         }
 
-        /* --- Custom Page Transitions & Routing --- */
+        /* --- STATIC PAGE VIEW / ROUTING (No Transitions) --- */
         .page-view {
-            transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out;
-            opacity: 0;
-            transform: translateY(20px);
-            position: absolute; 
+            display: none; /* Hide by default */
             width: 100%;
             min-height: calc(100vh - 80px); 
             top: 68px; 
             padding-top: 2rem;
             padding-bottom: 2rem;
-        }
-        .page-view.active {
-            opacity: 1;
-            transform: translateY(0);
             position: relative; 
         }
-        .page-view:not(.active) {
-            z-index: -1; 
-            height: 0;
-            overflow: hidden;
+        .page-view.active {
+            display: block; /* Show instantly */
         }
 
-        /* --- Animations --- */
-
-        /* 1. Hero Text Cinematic Reveal */
-        .hero-title-line {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-        }
-        .hero-title-line:nth-child(1) { transition-delay: 0.1s; }
-        .hero-title-line:nth-child(2) { transition-delay: 0.3s; }
-        .hero-title-line.revealed {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* 2. Scroll-Based Product Image Transformation (Vibe) */
-        .product-scroll-transform {
-            opacity: 0;
-            transform: translateY(60px) scale(0.95);
-            transition: opacity 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Smooth cubic-bezier for a fluid feel */
-            will-change: opacity, transform;
-        }
-        .product-scroll-transform.visible {
-            opacity: 1;
-            transform: translateY(0) scale(1.0);
-        }
+        /* --- STATIC HOVER EFFECTS (No Transforms/Transitions) --- */
         
-        /* 3. Social Button Hover (Uses new Teal glow) */
+        /* Social Button Hover (Uses no transform/transition) */
         .social-button {
-            transition: all 0.3s ease-in-out;
-            box-shadow: 0 0 0 0 rgba(0, 168, 150, 0.4); 
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
         .social-button:hover {
-            transform: translateY(-2px) scale(1.02);
-            box-shadow: 0 4px 10px rgba(0, 168, 150, 0.6);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); /* Static shadow change for feedback */
         }
         
         /* Primary button styling override */
@@ -124,41 +88,34 @@
             color: var(--stud-dark);
         }
 
-        /* 4. Color Swatch Interaction */
+        /* Color Swatch Interaction (No Transforms) */
         .color-swatch {
-            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
             cursor: pointer;
-        }
-        .color-swatch:hover {
-            transform: scale(1.1);
         }
         .color-swatch.selected {
             box-shadow: 0 0 0 4px var(--stud-light), 0 0 0 6px var(--stud-primary); 
         }
         
-        /* 5. Active Navigation Link Indicator */
+        /* Active Navigation Link Indicator */
         .nav-link.active {
             color: var(--stud-primary); 
             font-weight: 700;
             border-bottom: 2px solid var(--stud-primary);
         }
         
-        /* 6. Logo Styling */
+        /* Logo Styling */
         .stud-logo {
             color: var(--stud-dark);
-            transition: color 0.3s;
         }
         .stud-logo:hover {
             color: var(--stud-primary);
         }
 
-        /* 7. Contact Card Styling - Added flex for centering and h-full for equal height potential */
+        /* Contact Card Styling (No Transforms/Transitions) */
         .contact-card {
             background-color: rgba(63, 81, 92, 0.2); 
             backdrop-filter: blur(2px);
-            transition: transform 0.3s ease-in-out, box-shadow 0.3s;
             color: var(--stud-light);
-            /* New classes for perfect alignment and consistent size */
             height: 100%; 
             display: flex;
             flex-direction: column;
@@ -167,12 +124,11 @@
             text-align: center;
         }
         .contact-card:hover {
-            transform: translateY(-5px) scale(1.02);
             background-color: var(--stud-dark); 
             box-shadow: 0 15px 25px rgba(0, 0, 0, 0.4);
         }
         .contact-card .icon-container {
-            transition: color 0.3s;
+            color: white;
         }
         .contact-card:hover .icon-container {
             color: var(--stud-primary);
@@ -192,11 +148,11 @@
                 STUD Designs
             </a>
             <nav class="space-x-6 sm:space-x-8">
-                <a href="#" data-page="home" class="nav-link text-gray-700 hover:text-[--stud-dark] transition duration-300 pb-4">Home</a>
-                <a href="#" data-page="men" class="nav-link text-gray-700 hover:text-[--stud-dark] transition duration-300 pb-4">Men</a>
-                <a href="#" data-page="women" class="nav-link text-gray-700 hover:text-[--stud-dark] transition duration-300 pb-4">Women</a>
-                <a href="#" data-page="size-guide" class="nav-link text-gray-700 hover:text-[--stud-dark] transition duration-300 pb-4">Size Guide</a>
-                <a href="#" data-page="contact" class="nav-link text-gray-700 hover:text-[--stud-dark] transition duration-300 pb-4">Contact</a>
+                <a href="#" data-page="home" class="nav-link text-gray-700 hover:text-[--stud-dark] pb-4">Home</a>
+                <a href="#" data-page="men" class="nav-link text-gray-700 hover:text-[--stud-dark] pb-4">Men</a>
+                <a href="#" data-page="women" class="nav-link text-gray-700 hover:text-[--stud-dark] pb-4">Women</a>
+                <a href="#" data-page="size-guide" class="nav-link text-gray-700 hover:text-[--stud-dark] pb-4">Size Guide</a>
+                <a href="#" data-page="contact" class="nav-link text-gray-700 hover:text-[--stud-dark] pb-4">Contact</a>
             </nav>
         </div>
     </header>
@@ -210,13 +166,13 @@
             <div class="dark-section h-[85vh] flex flex-col items-center justify-center text-center overflow-hidden border-b border-gray-800">
                 <div class="px-4 max-w-5xl">
                     <h1 class="text-6xl sm:text-7xl lg:text-9xl font-black uppercase leading-none mb-6">
-                        <span class="hero-title-line block stud-accent">Engineered</span>
-                        <span class="hero-title-line block text-white">for Presence.</span>
+                        <span class="block stud-accent">Engineered</span>
+                        <span class="block text-white">for Presence.</span>
                     </h1>
-                    <p class="text-xl sm:text-2xl text-gray-400 mb-10 font-light hero-title-line" style="transition-delay: 0.5s;">
+                    <p class="text-xl sm:text-2xl text-gray-400 mb-10 font-light">
                         STUD Designs creates minimalist, high-impact apparel. We focus on one perfect fit and one perfect material. **Essentials redefined.**
                     </p>
-                    <a href="#" data-page="men" class="nav-link inline-block px-10 py-4 text-lg uppercase tracking-wider rounded-lg shadow-xl transition duration-300 social-button stud-btn-primary hero-title-line" style="transition-delay: 0.7s;">
+                    <a href="#" data-page="men" class="nav-link inline-block px-10 py-4 text-lg uppercase tracking-wider rounded-lg shadow-xl social-button stud-btn-primary">
                         View Collections
                     </a>
                 </div>
@@ -225,23 +181,23 @@
             <!-- Brand Details Section (Dark Section) -->
             <div class="py-20 md:py-32 px-4 dark-section border-t border-gray-800">
                 <div class="max-w-7xl mx-auto">
-                    <span class="stud-accent font-semibold uppercase tracking-widest text-sm mb-2 block text-center product-scroll-transform">Our Philosophy</span>
-                    <h2 class="text-5xl md:text-6xl font-extrabold mb-12 text-center leading-tight text-white product-scroll-transform">
+                    <span class="stud-accent font-semibold uppercase tracking-widest text-sm mb-2 block text-center">Our Philosophy</span>
+                    <h2 class="text-5xl md:text-6xl font-extrabold mb-12 text-center leading-tight text-white">
                         The Core of STUD
                     </h2>
 
                     <div class="grid md:grid-cols-3 gap-10 text-center">
-                        <div class="product-scroll-transform">
+                        <div>
                             <i class="fas fa-hammer text-4xl stud-accent mb-4"></i>
                             <h3 class="text-2xl font-bold mb-3 stud-accent">Material Focus</h3>
                             <p class="text-gray-400">We source only heavy-weight, combed cotton blends, ensuring durability and a premium, structured drape that lasts for years.</p>
                         </div>
-                        <div class="product-scroll-transform" style="transition-delay: 0.1s;">
+                        <div >
                             <i class="fas fa-ruler-combined text-4xl stud-accent mb-4"></i>
                             <h3 class="text-2xl font-bold mb-3 stud-accent">The Perfect Fit</h3>
                             <p class="text-gray-400">Our design is centered around one modern oversized fit for men and one fluid, relaxed fit for women. Simplistic sizing, maximum style.</p>
                         </div>
-                        <div class="product-scroll-transform" style="transition-delay: 0.2s;">
+                        <div >
                             <i class="fas fa-recycle text-4xl stud-accent mb-4"></i>
                             <h3 class="text-2xl font-bold mb-3 stud-accent">Zero Waste</h3>
                             <p class="text-gray-400">We produce limited runs and operate exclusively through direct contact, minimizing overstock and maintaining exclusivity.</p>
@@ -254,8 +210,8 @@
         <!-- ===== 2. MEN VIEW: ESSENTIAL TEE DETAILS (Light Section) ===== -->
         <section id="men-view" class="page-view py-20 md:py-32 px-4">
             <div class="max-w-7xl mx-auto">
-                <span class="stud-accent font-semibold uppercase tracking-widest text-sm mb-2 block product-scroll-transform">Men's Essential Tee</span>
-                <h2 class="text-5xl md:text-6xl font-extrabold mb-16 leading-tight product-scroll-transform">
+                <span class="stud-accent font-semibold uppercase tracking-widest text-sm mb-2 block">Men's Essential Tee</span>
+                <h2 class="text-5xl md:text-6xl font-extrabold mb-16 leading-tight">
                     The Essential Tee
                 </h2>
 
@@ -263,7 +219,7 @@
                     
                     <!-- Feature Text Column -->
                     <div class="md:sticky md:top-28">
-                        <div class="product-scroll-transform">
+                        <div>
                             <h3 class="text-4xl font-extrabold mb-6">
                                 The Engineered <span class="stud-accent">Drape</span>.
                             </h3>
@@ -290,14 +246,14 @@
                                 <li><i class="fas fa-tag stud-accent mr-2"></i> Minimal Embroidered Logo Detail</li>
                             </ul>
 
-                            <a href="#" data-page="size-guide" class="nav-link stud-accent font-semibold hover:text-[--stud-dark] transition duration-300">
+                            <a href="#" data-page="size-guide" class="nav-link stud-accent font-semibold hover:text-[--stud-dark]">
                                 View Size Measurements <i class="fas fa-arrow-right ml-2"></i>
                             </a>
                         </div>
                         
                         <!-- CTA Block -->
-                        <div class="mt-10 product-scroll-transform">
-                             <a href="#" data-page="contact" class="nav-link inline-block px-10 py-4 text-lg uppercase tracking-wider rounded-lg shadow-xl transition duration-300 social-button stud-btn-primary">
+                        <div class="mt-10">
+                             <a href="#" data-page="contact" class="nav-link inline-block px-10 py-4 text-lg uppercase tracking-wider rounded-lg shadow-xl social-button stud-btn-primary">
                                 Enquire Now
                             </a>
                         </div>
@@ -306,14 +262,14 @@
                     <!-- Image Gallery Column -->
                     <div class="space-y-12">
                         <!-- Image 1: Side Profile -->
-                        <div class="product-scroll-transform">
+                        <div>
                             <img id="men-img-1" class="image-gallery-item w-full h-auto rounded-xl shadow-xl border border-gray-300"
                                  src="https://placehold.co/800x1000/2D3A42/ffffff?text=ESSENTIAL+TEE+MEN+BLACK+FIT"
                                  alt="Side profile fit of the STUD Designs Essential t-shirt in Black">
                         </div>
                         
                         <!-- Image 2: Close-up Detail -->
-                        <div class="product-scroll-transform">
+                        <div>
                             <img id="men-img-2" class="image-gallery-item w-full h-auto rounded-xl shadow-xl border border-gray-300"
                                  src="https://placehold.co/800x800/2D3A42/ffffff?text=ESSENTIAL+TEE+MEN+BLACK+DETAIL"
                                  alt="Close-up of the minimal logo embroidery on Black tee">
@@ -326,8 +282,8 @@
         <!-- ===== 3. WOMEN VIEW: SIGNATURE CREW DETAILS (Dark Section) ===== -->
         <section id="women-view" class="page-view py-20 md:py-32 px-4 dark-section">
             <div class="max-w-7xl mx-auto">
-                <span class="stud-accent font-semibold uppercase tracking-widest text-sm mb-2 block product-scroll-transform">Women's Signature Crew</span>
-                <h2 class="text-5xl md:text-6xl font-extrabold mb-16 leading-tight product-scroll-transform">
+                <span class="stud-accent font-semibold uppercase tracking-widest text-sm mb-2 block">Women's Signature Crew</span>
+                <h2 class="text-5xl md:text-6xl font-extrabold mb-16 leading-tight">
                     The Signature Crew
                 </h2>
 
@@ -335,7 +291,7 @@
                     
                     <!-- Feature Text Column -->
                     <div class="md:sticky md:top-28">
-                        <div class="product-scroll-transform">
+                        <div>
                             <h3 class="text-4xl font-extrabold mb-6">
                                 Fluidity in <span class="stud-accent">Motion</span>.
                             </h3>
@@ -362,14 +318,14 @@
                                 <li><i class="fas fa-tag stud-accent mr-2"></i> Subtle Cropped Length</li>
                             </ul>
 
-                            <a href="#" data-page="size-guide" class="nav-link stud-accent font-semibold hover:text-white transition duration-300">
+                            <a href="#" data-page="size-guide" class="nav-link stud-accent font-semibold hover:text-white">
                                 View Size Measurements <i class="fas fa-arrow-right ml-2"></i>
                             </a>
                         </div>
                         
                         <!-- CTA Block -->
-                        <div class="mt-10 product-scroll-transform">
-                            <a href="#" data-page="contact" class="nav-link inline-block px-10 py-4 text-lg uppercase tracking-wider rounded-lg shadow-xl transition duration-300 social-button stud-btn-primary">
+                        <div class="mt-10">
+                            <a href="#" data-page="contact" class="nav-link inline-block px-10 py-4 text-lg uppercase tracking-wider rounded-lg shadow-xl social-button stud-btn-primary">
                                 Enquire Now
                             </a>
                         </div>
@@ -378,13 +334,13 @@
                     <!-- Image Gallery Column -->
                     <div class="space-y-12">
                         <!-- The IDs are crucial for the color swap JS -->
-                        <div class="product-scroll-transform">
+                        <div>
                             <img id="women-img-1" class="image-gallery-item w-full h-auto rounded-xl shadow-xl border border-gray-700"
                                  src="https://placehold.co/800x1000/000000/F5F5F5?text=SIGNATURE+CREW+WOMEN+BLACK+FIT"
                                  alt="Side profile fit of the black Signature Crew">
                         </div>
                         
-                        <div class="product-scroll-transform">
+                        <div>
                             <img id="women-img-2" class="image-gallery-item w-full h-auto rounded-xl shadow-xl border border-gray-700"
                                  src="https://placehold.co/800x800/000000/F5F5F5?text=SIGNATURE+CREW+WOMEN+BLACK+TEXTURE"
                                  alt="Close-up of the black Signature Crew fabric texture">
@@ -397,31 +353,31 @@
         <!-- ===== 4. SIZE GUIDE VIEW: Interactive Measurements Table (Light Section) ===== -->
         <section id="size-guide-view" class="page-view py-20 md:py-32 px-4">
             <div class="max-w-4xl mx-auto text-center">
-                <span class="stud-accent font-semibold uppercase tracking-widest text-sm mb-2 block product-scroll-transform">Measurements</span>
-                <h2 class="text-5xl md:text-6xl font-extrabold mb-12 leading-tight product-scroll-transform">
+                <span class="stud-accent font-semibold uppercase tracking-widest text-sm mb-2 block">Measurements</span>
+                <h2 class="text-5xl md:text-6xl font-extrabold mb-12 leading-tight">
                     Find Your <span class="stud-accent">Perfect Fit</span>
                 </h2>
                 
                 <!-- Gender Toggle -->
-                <div class="flex justify-center space-x-4 mb-8 product-scroll-transform">
-                    <button id="toggle-men" class="px-6 py-3 rounded-lg text-lg font-semibold stud-btn-primary transition duration-300">
+                <div class="flex justify-center space-x-4 mb-8">
+                    <button id="toggle-men" class="px-6 py-3 rounded-lg text-lg font-semibold stud-btn-primary">
                         Men's Sizing
                     </button>
-                    <button id="toggle-women" class="px-6 py-3 rounded-lg text-lg font-semibold bg-gray-300 text-black hover:bg-gray-400 transition duration-300">
+                    <button id="toggle-women" class="px-6 py-3 rounded-lg text-lg font-semibold bg-gray-300 text-black hover:bg-gray-400">
                         Women's Sizing
                     </button>
                 </div>
 
                 <!-- Size Table -->
-                <div id="size-table-container" class="product-scroll-transform overflow-x-auto shadow-2xl rounded-xl border border-gray-200">
+                <div id="size-table-container" class="overflow-x-auto shadow-2xl rounded-xl border border-gray-200">
                     <!-- Table will be dynamically populated by JS -->
                 </div>
                 
-                <p class="text-gray-600 text-sm mt-8 product-scroll-transform">
+                <p class="text-gray-600 text-sm mt-8">
                     *All measurements are in inches. For the best fit, compare these to a garment you already own.
                 </p>
-                <div class="mt-12 product-scroll-transform">
-                     <a href="#" data-page="contact" class="nav-link inline-block px-10 py-4 text-lg uppercase tracking-wider rounded-lg shadow-xl transition duration-300 social-button stud-btn-primary">
+                <div class="mt-12">
+                     <a href="#" data-page="contact" class="nav-link inline-block px-10 py-4 text-lg uppercase tracking-wider rounded-lg shadow-xl social-button stud-btn-primary">
                         Need Help With Sizing?
                     </a>
                 </div>
@@ -433,10 +389,10 @@
         <section id="contact-view" class="page-view py-20 md:py-32 px-4 dark-section border-t border-b border-gray-800">
             <div class="max-w-7xl mx-auto text-center">
                 
-                <h2 class="text-5xl md:text-6xl font-extrabold mb-4 text-white product-scroll-transform">
+                <h2 class="text-5xl md:text-6xl font-extrabold mb-4 text-white">
                     Connect With Us Directly
                 </h2>
-                <p class="text-gray-300 text-xl mb-12 product-scroll-transform">
+                <p class="text-gray-300 text-xl mb-12">
                     Our team is ready to assist you with sizing, stock availability, and placing your exclusive order. Choose your preferred channel below.
                 </p>
 
@@ -444,7 +400,7 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-16 max-w-5xl mx-auto">
                     
                     <!-- Card 1: WhatsApp -->
-                    <a href="https://wa.me/1234567890" target="_blank" class="contact-card p-6 rounded-xl border border-gray-700 shadow-xl product-scroll-transform bg-green-700/50 hover:bg-green-700 transition duration-300" style="transition-delay: 0s;">
+                    <a href="https://wa.me/1234567890" target="_blank" class="contact-card p-6 rounded-xl border border-gray-700 shadow-xl bg-green-700/50 hover:bg-green-700">
                         <div class="icon-container text-5xl text-white mb-4">
                             <i class="fab fa-whatsapp"></i>
                         </div>
@@ -453,7 +409,7 @@
                     </a>
                     
                     <!-- Card 2: Instagram -->
-                    <a href="https://instagram.com/studdesigns_official" target="_blank" class="contact-card p-6 rounded-xl border border-gray-700 shadow-xl product-scroll-transform bg-pink-700/50 hover:bg-pink-700 transition duration-300" style="transition-delay: 0.1s;">
+                    <a href="https://instagram.com/studdesigns_official" target="_blank" class="contact-card p-6 rounded-xl border border-gray-700 shadow-xl bg-pink-700/50 hover:bg-pink-700">
                         <div class="icon-container text-5xl text-white mb-4">
                             <i class="fab fa-instagram"></i>
                         </div>
@@ -462,7 +418,7 @@
                     </a>
 
                     <!-- Card 3: Facebook -->
-                    <a href="https://facebook.com/studdesigns" target="_blank" class="contact-card p-6 rounded-xl border border-gray-700 shadow-xl product-scroll-transform bg-blue-700/50 hover:bg-blue-700 transition duration-300" style="transition-delay: 0.2s;">
+                    <a href="https://facebook.com/studdesigns" target="_blank" class="contact-card p-6 rounded-xl border border-gray-700 shadow-xl bg-blue-700/50 hover:bg-blue-700">
                         <div class="icon-container text-5xl text-white mb-4">
                             <i class="fab fa-facebook-f"></i>
                         </div>
@@ -471,7 +427,7 @@
                     </a>
 
                     <!-- Card 4: Mail (Now perfectly aligned) -->
-                    <a href="mailto:contact@studdesigns.com" class="contact-card p-6 rounded-xl border border-gray-700 shadow-xl product-scroll-transform bg-gray-600/50 hover:bg-gray-600 transition duration-300" style="transition-delay: 0.3s;">
+                    <a href="mailto:contact@studdesigns.com" class="contact-card p-6 rounded-xl border border-gray-700 shadow-xl bg-gray-600/50 hover:bg-gray-600">
                         <div class="icon-container text-5xl text-white mb-4">
                             <i class="fas fa-envelope"></i>
                         </div>
@@ -480,7 +436,7 @@
                     </a>
 
                     <!-- Card 5: LinkedIn (Now perfectly aligned) -->
-                    <a href="https://linkedin.com/company/studdesigns" target="_blank" class="contact-card p-6 rounded-xl border border-gray-700 shadow-xl product-scroll-transform bg-blue-900/50 hover:bg-blue-900 transition duration-300" style="transition-delay: 0.4s;">
+                    <a href="https://linkedin.com/company/studdesigns" target="_blank" class="contact-card p-6 rounded-xl border border-gray-700 shadow-xl bg-blue-900/50 hover:bg-blue-900">
                         <div class="icon-container text-5xl text-white mb-4">
                             <i class="fab fa-linkedin-in"></i>
                         </div>
@@ -490,7 +446,7 @@
                 </div>
 
                 <!-- Secondary/Direct Info -->
-                <div class="mt-16 text-gray-400 product-scroll-transform">
+                <div class="mt-16 text-gray-400">
                     <h3 class="text-3xl font-bold mb-4 text-white stud-accent">Corporate Office</h3>
                     <p class="text-lg">STUD Designs Co., Ltd.</p>
                     <p class="text-lg">555 Fashion Avenue, Suite 101, Global City.</p>
@@ -504,12 +460,12 @@
     <!-- Footer -->
     <footer class="py-10 border-t border-gray-200 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-gray-500 text-sm">
-            <p>&copy; 2024 STUD Designs. All Rights Reserved. | Designed with Vibe Coding</p>
+            <p>&copy; 2024 STUD Designs. All Rights Reserved. | Designed for Presence</p>
         </div>
     </footer>
 
     <script>
-        // --- JAVASCRIPT FOR ROUTING, ANIMATION, AND INTERACTIVITY ---
+        // --- JAVASCRIPT FOR ROUTING AND INTERACTIVITY (All Animation Logic Removed) ---
 
         const pageViews = document.querySelectorAll('.page-view');
         const navLinks = document.querySelectorAll('.nav-link');
@@ -531,7 +487,7 @@
             }
         };
 
-        // --- PAGE ROUTING FUNCTION ---
+        // --- PAGE ROUTING FUNCTION (Instant) ---
         function showPage(pageId) {
             if (pageId === currentPage) return;
             currentPage = pageId;
@@ -544,23 +500,12 @@
                 }
             });
 
-            // 2. Hide all pages and show only the requested one
+            // 2. Hide all pages and show only the requested one instantly
             pageViews.forEach(view => {
-                if (view.id === `${pageId}-view`) {
-                    view.classList.add('active');
-                    window.scrollTo({ top: 0, behavior: 'instant' }); 
-                    setTimeout(checkScrollReveal, 50); 
-                    
-                    // Specific action for Home page reveal
-                    if (pageId === 'home') {
-                        document.querySelectorAll('.hero-title-line').forEach(el => el.classList.add('revealed'));
-                    } else {
-                        document.querySelectorAll('.hero-title-line').forEach(el => el.classList.remove('revealed'));
-                    }
-                } else {
-                    view.classList.remove('active');
-                }
+                view.classList.remove('active');
             });
+            document.getElementById(`${pageId}-view`).classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'instant' }); 
             
             // 3. Specific action for Size Guide page
             if (pageId === 'size-guide') {
@@ -577,32 +522,7 @@
             });
         });
 
-        // --- SCROLL REVEAL / TRANSFORM LOGIC (for .product-scroll-transform) ---
-        const scrollRevealElements = document.querySelectorAll('.product-scroll-transform');
-
-        const observerOptions = {
-            root: null, 
-            rootMargin: '0px',
-            threshold: 0.1 
-        };
-
-        const observer = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                const parentPage = entry.target.closest('.page-view');
-                if (entry.isIntersecting && parentPage && parentPage.classList.contains('active')) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-
-        function checkScrollReveal() {
-             scrollRevealElements.forEach(element => {
-                element.classList.remove('visible'); 
-                observer.observe(element);
-            });
-        }
-        
-        // --- INTERACTIVE COLOR SWATCH LOGIC (Women View) ---
+        // --- INTERACTIVE COLOR SWATCH LOGIC (Women View - Instant Swap) ---
         const womenColorSwatchesContainer = document.getElementById('women-color-swatches-container');
         const womenSelectedColorName = document.getElementById('women-selected-color-name');
         const womenImgs = [
@@ -628,22 +548,15 @@
                 womenImgs.forEach(imgData => {
                     const imgElement = document.getElementById(imgData.id);
                     if (imgElement) {
-                        imgElement.classList.remove('opacity-100');
-                        imgElement.classList.add('opacity-50', 'blur-sm');
-
-                        setTimeout(() => {
-                            imgElement.src = `${imgData.baseSrc}/${hex}/${textColor}?text=SIGNATURE+CREW+WOMEN+${modifier}+${imgData.alt.toUpperCase().replace(/ /g, '+')}`;
-                            imgElement.alt = `${color} ${imgData.alt}`;
-                            
-                            imgElement.classList.remove('opacity-50', 'blur-sm');
-                            imgElement.classList.add('opacity-100');
-                        }, 250); 
+                        // Instant swap - animation classes removed
+                        imgElement.src = `${imgData.baseSrc}/${hex}/${textColor}?text=SIGNATURE+CREW+WOMEN+${modifier}+${imgData.alt.toUpperCase().replace(/ /g, '+')}`;
+                        imgElement.alt = `${color} ${imgData.alt}`;
                     }
                 });
             });
         }
 
-        // --- INTERACTIVE COLOR SWATCH LOGIC (Men View) ---
+        // --- INTERACTIVE COLOR SWATCH LOGIC (Men View - Instant Swap) ---
         const menColorSwatchesContainer = document.getElementById('men-color-swatches-container');
         const menSelectedColorName = document.getElementById('men-selected-color-name');
         const menImgs = [
@@ -669,16 +582,9 @@
                 menImgs.forEach(imgData => {
                     const imgElement = document.getElementById(imgData.id);
                     if (imgElement) {
-                        imgElement.classList.remove('opacity-100');
-                        imgElement.classList.add('opacity-50', 'blur-sm');
-
-                        setTimeout(() => {
-                            imgElement.src = `${imgData.baseSrc}/${hex}/${textColor}?text=ESSENTIAL+TEE+MEN+${modifier}+${imgData.alt.toUpperCase().replace(/ /g, '+')}`;
-                            imgElement.alt = `${color} ${imgData.alt}`;
-                            
-                            imgElement.classList.remove('opacity-50', 'blur-sm');
-                            imgElement.classList.add('opacity-100');
-                        }, 250); 
+                        // Instant swap - animation classes removed
+                        imgElement.src = `${imgData.baseSrc}/${hex}/${textColor}?text=ESSENTIAL+TEE+MEN+${modifier}+${imgData.alt.toUpperCase().replace(/ /g, '+')}`;
+                        imgElement.alt = `${color} ${imgData.alt}`;
                     }
                 });
             });
@@ -718,7 +624,7 @@
             for (const size in data) {
                 const rowData = data[size];
                 tableHTML += `
-                    <tr class="hover:bg-teal-50 transition duration-150">
+                    <tr class="hover:bg-teal-50">
                         <td class="px-6 py-4 whitespace-nowrap text-lg font-bold text-gray-900">${size}</td>
                         ${Object.values(rowData).map(value => `<td class="px-6 py-4 whitespace-nowrap text-gray-700">${value}</td>`).join('')}
                     </tr>
@@ -728,13 +634,13 @@
             tableHTML += `</tbody></table>`;
             sizeTableContainer.innerHTML = tableHTML;
             
-            // Update toggle button styling
+            // Update toggle button styling (removes transition classes)
             if (gender === 'men') {
-                toggleMen.className = `px-6 py-3 rounded-lg text-lg font-semibold transition duration-300 ${getPrimaryButtonClasses()}`;
-                toggleWomen.className = `px-6 py-3 rounded-lg text-lg font-semibold transition duration-300 ${getSecondaryButtonClasses()}`;
+                toggleMen.className = `px-6 py-3 rounded-lg text-lg font-semibold ${getPrimaryButtonClasses()}`;
+                toggleWomen.className = `px-6 py-3 rounded-lg text-lg font-semibold ${getSecondaryButtonClasses()}`;
             } else {
-                toggleWomen.className = `px-6 py-3 rounded-lg text-lg font-semibold transition duration-300 ${getPrimaryButtonClasses()}`;
-                toggleMen.className = `px-6 py-3 rounded-lg text-lg font-semibold transition duration-300 ${getSecondaryButtonClasses()}`;
+                toggleWomen.className = `px-6 py-3 rounded-lg text-lg font-semibold ${getPrimaryButtonClasses()}`;
+                toggleMen.className = `px-6 py-3 rounded-lg text-lg font-semibold ${getSecondaryButtonClasses()}`;
             }
         }
 
@@ -749,3 +655,4 @@
     </script>
 </body>
 </html>
+
