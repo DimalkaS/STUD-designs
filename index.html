@@ -43,8 +43,10 @@
             color: var(--stud-primary);
         }
 
-        /* --- STATIC PAGE VIEW / ROUTING (No Transitions) --- */
+        /* --- SMOOTH PAGE TRANSITIONS & ROUTING --- */
         .page-view {
+            transition: opacity 0.3s ease-in-out; /* Fast, subtle fade */
+            opacity: 0;
             display: none; /* Hide by default */
             width: 100%;
             min-height: calc(100vh - 80px); 
@@ -54,17 +56,33 @@
             position: relative; 
         }
         .page-view.active {
-            display: block; /* Show instantly */
+            display: block; /* Show immediately */
+            opacity: 1; /* Fade in */
         }
 
-        /* --- STATIC HOVER EFFECTS (No Transforms/Transitions) --- */
+        /* --- HIGH-PERFORMANCE ANIMATIONS --- */
+
+        /* 1. Hero Text Cinematic Reveal */
+        .hero-title-line {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+        }
+        .hero-title-line:nth-child(1) { transition-delay: 0.1s; }
+        .hero-title-line:nth-child(2) { transition-delay: 0.3s; }
+        .hero-title-line.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
         
-        /* Social Button Hover (Uses no transform/transition) */
+        /* 2. Social Button Hover */
         .social-button {
+            transition: all 0.2s ease-out; /* Reintroducing smooth transition */
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
         .social-button:hover {
-            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); /* Static shadow change for feedback */
+            transform: translateY(-2px); /* Subtle lift */
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.3); 
         }
         
         /* Primary button styling override */
@@ -73,6 +91,7 @@
             color: var(--stud-dark);
             font-weight: 700;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.2s; /* Added transition */
         }
         .stud-btn-primary:hover {
             background-color: #008f80; /* Darker teal for hover */
@@ -82,28 +101,33 @@
         .stud-btn-secondary {
             border: 2px solid var(--stud-primary);
             color: var(--stud-primary);
+            transition: background-color 0.2s, color 0.2s; /* Added transition */
         }
         .stud-btn-secondary:hover {
             background-color: var(--stud-primary);
             color: var(--stud-dark);
         }
 
-        /* Color Swatch Interaction (No Transforms) */
+        /* 3. Color Swatch Interaction */
         .color-swatch {
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; /* Reintroducing smooth transition */
             cursor: pointer;
+        }
+        .color-swatch:hover {
+            transform: scale(1.1); /* Subtle scaling */
         }
         .color-swatch.selected {
             box-shadow: 0 0 0 4px var(--stud-light), 0 0 0 6px var(--stud-primary); 
         }
         
-        /* Active Navigation Link Indicator */
+        /* Active Navigation Link Indicator (Static) */
         .nav-link.active {
             color: var(--stud-primary); 
             font-weight: 700;
             border-bottom: 2px solid var(--stud-primary);
         }
         
-        /* Logo Styling */
+        /* Logo Styling (Static) */
         .stud-logo {
             color: var(--stud-dark);
         }
@@ -111,7 +135,7 @@
             color: var(--stud-primary);
         }
 
-        /* Contact Card Styling (No Transforms/Transitions) */
+        /* 4. Contact Card Styling */
         .contact-card {
             background-color: rgba(63, 81, 92, 0.2); 
             backdrop-filter: blur(2px);
@@ -122,13 +146,16 @@
             align-items: center;
             justify-content: center;
             text-align: center;
+            transition: transform 0.3s ease-out, background-color 0.3s, box-shadow 0.3s; /* Reintroducing smooth transition */
         }
         .contact-card:hover {
+            transform: translateY(-5px); /* Subtle lift */
             background-color: var(--stud-dark); 
-            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.5);
         }
         .contact-card .icon-container {
             color: white;
+            transition: color 0.3s;
         }
         .contact-card:hover .icon-container {
             color: var(--stud-primary);
@@ -166,13 +193,13 @@
             <div class="dark-section h-[85vh] flex flex-col items-center justify-center text-center overflow-hidden border-b border-gray-800">
                 <div class="px-4 max-w-5xl">
                     <h1 class="text-6xl sm:text-7xl lg:text-9xl font-black uppercase leading-none mb-6">
-                        <span class="block stud-accent">Engineered</span>
-                        <span class="block text-white">for Presence.</span>
+                        <span class="block stud-accent hero-title-line">Engineered</span>
+                        <span class="block text-white hero-title-line">for Presence.</span>
                     </h1>
-                    <p class="text-xl sm:text-2xl text-gray-400 mb-10 font-light">
+                    <p class="text-xl sm:text-2xl text-gray-400 mb-10 font-light hero-title-line" style="transition-delay: 0.5s;">
                         STUD Designs creates minimalist, high-impact apparel. We focus on one perfect fit and one perfect material. **Essentials redefined.**
                     </p>
-                    <a href="#" data-page="men" class="nav-link inline-block px-10 py-4 text-lg uppercase tracking-wider rounded-lg shadow-xl social-button stud-btn-primary">
+                    <a href="#" data-page="men" class="nav-link inline-block px-10 py-4 text-lg uppercase tracking-wider rounded-lg shadow-xl social-button stud-btn-primary hero-title-line" style="transition-delay: 0.7s;">
                         View Collections
                     </a>
                 </div>
@@ -465,7 +492,7 @@
     </footer>
 
     <script>
-        // --- JAVASCRIPT FOR ROUTING AND INTERACTIVITY (All Animation Logic Removed) ---
+        // --- JAVASCRIPT FOR ROUTING AND INTERACTIVITY (Optimized for Speed) ---
 
         const pageViews = document.querySelectorAll('.page-view');
         const navLinks = document.querySelectorAll('.nav-link');
@@ -487,12 +514,15 @@
             }
         };
 
-        // --- PAGE ROUTING FUNCTION (Instant) ---
+        // --- PAGE ROUTING FUNCTION (Instant Routing + Fast Visual Fade) ---
         function showPage(pageId) {
             if (pageId === currentPage) return;
+            
+            // 1. Hide current page immediately (opacity fade out handled by CSS)
+            document.getElementById(`${currentPage}-view`).classList.remove('active');
             currentPage = pageId;
 
-            // 1. Update Navigation Links
+            // 2. Update Navigation Links
             navLinks.forEach(link => {
                 link.classList.remove('active');
                 if (link.dataset.page === pageId) {
@@ -500,14 +530,34 @@
                 }
             });
 
-            // 2. Hide all pages and show only the requested one instantly
-            pageViews.forEach(view => {
-                view.classList.remove('active');
-            });
-            document.getElementById(`${pageId}-view`).classList.add('active');
-            window.scrollTo({ top: 0, behavior: 'instant' }); 
+            // 3. Show new page (display: block, opacity: 1 fade in handled by CSS)
+            const nextPage = document.getElementById(`${pageId}-view`);
+            if (nextPage) {
+                // Must ensure page is displayed before adding 'active' to trigger fade-in
+                nextPage.style.display = 'block'; 
+                setTimeout(() => {
+                    nextPage.classList.add('active');
+                    window.scrollTo({ top: 0, behavior: 'instant' }); 
+                }, 10); // Minimal delay to ensure display:block is applied before transition starts
+            }
             
-            // 3. Specific action for Size Guide page
+            // 4. Clean up previous page display property after transition finishes
+            pageViews.forEach(view => {
+                 if (view.id !== `${pageId}-view` && view.classList.contains('active') === false) {
+                    setTimeout(() => { view.style.display = 'none'; }, 300); // Match CSS transition time
+                }
+            });
+
+            // 5. Specific action for Home page reveal
+            const heroLines = document.querySelectorAll('.hero-title-line');
+            if (pageId === 'home') {
+                heroLines.forEach(el => el.classList.add('revealed'));
+            } else {
+                // Remove reveal class when leaving home page
+                heroLines.forEach(el => el.classList.remove('revealed'));
+            }
+            
+            // 6. Specific action for Size Guide page
             if (pageId === 'size-guide') {
                 renderSizeTable('men');
             }
@@ -548,7 +598,6 @@
                 womenImgs.forEach(imgData => {
                     const imgElement = document.getElementById(imgData.id);
                     if (imgElement) {
-                        // Instant swap - animation classes removed
                         imgElement.src = `${imgData.baseSrc}/${hex}/${textColor}?text=SIGNATURE+CREW+WOMEN+${modifier}+${imgData.alt.toUpperCase().replace(/ /g, '+')}`;
                         imgElement.alt = `${color} ${imgData.alt}`;
                     }
@@ -582,7 +631,6 @@
                 menImgs.forEach(imgData => {
                     const imgElement = document.getElementById(imgData.id);
                     if (imgElement) {
-                        // Instant swap - animation classes removed
                         imgElement.src = `${imgData.baseSrc}/${hex}/${textColor}?text=ESSENTIAL+TEE+MEN+${modifier}+${imgData.alt.toUpperCase().replace(/ /g, '+')}`;
                         imgElement.alt = `${color} ${imgData.alt}`;
                     }
@@ -650,9 +698,10 @@
         // --- Initial Load ---
         window.addEventListener('load', () => {
             showPage('home'); // Initialize to the home page
+            // Trigger hero reveal immediately on initial load
+            document.querySelectorAll('.hero-title-line').forEach(el => el.classList.add('revealed'));
         });
 
     </script>
 </body>
 </html>
-
